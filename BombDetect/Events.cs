@@ -3,7 +3,7 @@ using static SDL2.SDL.SDL_EventType;
 
 namespace BombDetect;
 
-public static class Events
+internal static class Events
 {
     public static void Update()
     {
@@ -16,17 +16,17 @@ public static class Events
                     break;
                 case SDL_KEYDOWN:
                 case SDL_KEYUP:
-                    Input.KeyEvent(e.key);
+                    //Input.KeyEvent(e.key);
                     break;
                 case SDL_MOUSEBUTTONDOWN:
                 case SDL_MOUSEBUTTONUP:
-                    Input.MouseButtonEvent(e.button);
+                    //Input.MouseButtonEvent(e.button);
                     break;
                 case SDL_MOUSEWHEEL:
-                    Input.MouseScrollWheelEvent(e.wheel);
+                    //Input.MouseScrollWheelEvent(e.wheel);
                     break;
                 case SDL_MOUSEMOTION:
-                    Input.MouseMotionEvent(e.motion);
+                    //Input.MouseMotionEvent(e.motion);
                     break;
             }
         }

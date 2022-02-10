@@ -1,72 +1,68 @@
-﻿namespace BombDetect;
-public class Engine
-{
-    private bool _running;
-    private static Engine _engine = new();
+﻿using static SDL2.SDL;
+using static SDL2.SDL_mixer;
+using static SDL2.SDL_ttf;
 
-    public static void Initialize(string title, int x, int y, int w, int h, uint flags)
+namespace BombDetect;
+public static class Engine
+{
+    public static bool Running;
+    public static void Initialize(string title, int x, int y, int w, int h, SDL_WindowFlags flags)
     {
-        Get().IInitialize(title, x, y, w, h, flags);
+        if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
+        {
+            Console.WriteLine("failed to init SDL, returning");
+            return;
+        }
+
+        if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+        {
+            Console.WriteLine("failed to init mixer, returning");
+            return;
+        }
+
+        if (TTF_Init() < 0)
+        {
+            Console.WriteLine("failed to init TTF, returning");
+            return;
+        }
+
+        Window.Initialize(title, x, y, w, h, flags);
+        Renderer.Initialize();
+
+        Running = true;
     }
 
     public static void Run(string sceneName)
     {
-        Get().IRun(sceneName);
+
     }
 
     public static void Quit()
     {
-        Get().IQuit();
+
     }
 
-    public static void Terminate(string message)
+    public static void UpdateEvents()
     {
-        Get().ITerminate(message);
+        Events.Update();
     }
 
-    private Engine()
-    {
-
-    }
-
-    private static Engine Get() => _engine;
-
-    private void Events()
+    public static void Update(float dt)
     {
 
     }
 
-    private void Update(float dt)
+    public static void Render()
     {
 
     }
 
-    private void Render()
+    public static void Destroy()
     {
-
+        
     }
 
-    private void Destroy()
-    {
-
-    }
-
-    private void IInitialize(string title, int x, int y, int w, int h, uint flags)
-    {
-
-    }
-
-    private void IRun(string sceneName)
-    {
-
-    }
-
-    private void IQuit()
-    {
-
-    }
-
-    private void ITerminate(string message)
+    public static void LogError(string message)
     {
 
     }
