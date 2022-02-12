@@ -12,7 +12,7 @@ public static class Renderer
     private static int _windowHeight;
     private static int _displayHeight;
 
-    public static void Initialize()
+    internal static void Initialize()
     {
         _renderer = SDL_CreateRenderer(Window.GetWindow(), -1, 
                 SDL_RendererFlags.SDL_RENDERER_ACCELERATED | SDL_RendererFlags.SDL_RENDERER_PRESENTVSYNC);

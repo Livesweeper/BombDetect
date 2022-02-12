@@ -4,7 +4,7 @@ using static SDL2.SDL_ttf;
 using static SDL2.SDL_image;
 
 namespace BombDetect;
-public static class Engine
+internal static class Engine
 {
     public static bool Running;
     public static void Initialize(string title, int x, int y, int w, int h, SDL_WindowFlags flags)
@@ -41,22 +41,26 @@ public static class Engine
 
     public static void Run(string sceneName)
     {
-        //
+        // scenes go here (placeholder)
 
-        try
+        if (Running)
         {
-            while (Running)
+            try
             {
-                UpdateEvents();
-                Update(Timer.GetDeltaTime());
-                Render();
-                Timer.Tick();
-                //
+                while (Running)
+                {
+                    // tick before render and shit
+                    Timer.Tick();
+                    UpdateEvents();
+                    Update(Timer.GetDeltaTime());
+                    Render();
+                    // i forgor
+                }
             }
-        }
-        catch (Exception e)
-        {
-            LogError(e.Message);
+            catch (Exception e)
+            {
+                LogError(e.Message);
+            }
         }
 
         Destroy();

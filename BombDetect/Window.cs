@@ -2,7 +2,7 @@ using static SDL2.SDL;
 
 namespace BombDetect;
 
-public static class Window
+internal static class Window
 {
     private static IntPtr _window;
     private static SDL_Rect _rect = new();

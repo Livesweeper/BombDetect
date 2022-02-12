@@ -16,17 +16,13 @@ internal static class Events
                     break;
                 case SDL_KEYDOWN:
                 case SDL_KEYUP:
-                    //Input.KeyEvent(e.key);
+                    Keyboard.HandleKeyboardInput(e);
                     break;
                 case SDL_MOUSEBUTTONDOWN:
                 case SDL_MOUSEBUTTONUP:
-                    //Input.MouseButtonEvent(e.button);
-                    break;
                 case SDL_MOUSEWHEEL:
-                    //Input.MouseScrollWheelEvent(e.wheel);
-                    break;
                 case SDL_MOUSEMOTION:
-                    //Input.MouseMotionEvent(e.motion);
+                    Mouse.HandleMouseInput(e);
                     break;
             }
         }
