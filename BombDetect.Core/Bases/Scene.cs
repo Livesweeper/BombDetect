@@ -7,6 +7,7 @@ namespace BombDetect.Core;
 public class Scene
 {
     public List<Thing> Things { get; } = new();
+    private bool _isRunning;
 
     public Scene()
     {
@@ -16,6 +17,7 @@ public class Scene
     // start the scene
     public void Start()
     {
+        _isRunning = true;
         // start all things
         foreach (var thing in Things)
         {
@@ -26,23 +28,36 @@ public class Scene
     // update the scene
     public void Update(float deltaTime)
     {
-        // update all things
-        foreach (var thing in Things)
+        // update all things if running
+        if (_isRunning)
         {
-            thing.OnUpdate(deltaTime);
+            foreach (var thing in Things)
+            {
+                thing.OnUpdate(deltaTime);
+            }
         }
     }
 
-    // render the scene if we have any 2D things
+    // render the scene if we have any 2D things and if the scene is running
     public void Render()
     {
-        foreach (var thing in Things)
+        // render all things if running
+        if (_isRunning)
         {
-            if (thing is Thing2D thing2D)
+            foreach (var thing in Things)
             {
-                thing2D.OnRender();
+                if (thing is Thing2D thing2D)
+                {
+                    thing2D.OnRender();
+                }
             }
         }
+    }
+
+    // stop
+    public void Stop()
+    {
+        _isRunning = false;
     }
 
     // destroy the scene
