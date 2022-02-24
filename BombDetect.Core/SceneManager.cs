@@ -14,7 +14,7 @@ public static class SceneManager
         }
 
         Scenes.Add(name, scene);
-        scene.Start();
+        //scene.Start();
     }
 
     public static void SetScene(string name, bool destroy = false)
