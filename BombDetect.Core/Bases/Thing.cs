@@ -28,7 +28,7 @@ public class Thing
     // stop
     public virtual void Stop()
     {
-        // do nothing
+        
     }
 
     // destroy the thing

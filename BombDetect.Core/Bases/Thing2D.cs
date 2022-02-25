@@ -36,6 +36,6 @@ public class Thing2D : Thing
     // a render function
     public virtual void OnRender()
     {
-        // do nothing
+        
     }
 }
