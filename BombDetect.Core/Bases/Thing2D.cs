@@ -5,8 +5,8 @@ namespace BombDetect.Core;
 // 2D thing
 public class Thing2D : Thing
 {
-    public Vector2 Position { get; }
-    public Vector2 Size { get; }
+    public Vector2 Position;
+    public Vector2 Size;
 
     // global position
     public Vector2 GlobalPosition { get; private set; }
@@ -14,10 +14,11 @@ public class Thing2D : Thing
     // z-index
     public int ZIndex { get; set; }
 
-    public Thing2D(string name, Vector2 position, Thing? parent = null)
+    public Thing2D(string name, Vector2 position, Vector2 size, Thing? parent = null)
         : base(name, parent)
     {
         Position = position;
+        Size = size;
     }
 
     // override OnUpdate to calculate global position if the parent is also a 2D thing
