@@ -25,7 +25,7 @@ public class Scene
         }
     }
 
-    // update the scene
+    // update
     public void Update(float deltaTime)
     {
         // update all things if running
@@ -38,7 +38,7 @@ public class Scene
         }
     }
 
-    // render the scene if we have any 2D things and if the scene is running
+    // render things
     public void Render()
     {
         // render all things if running
@@ -60,7 +60,7 @@ public class Scene
         _isRunning = false;
     }
 
-    // destroy the scene
+    // destroy everything!
     public void Destroy()
     {
         // destroy all things
@@ -68,5 +68,11 @@ public class Scene
         {
             thing.Destroy();
         }
+    }
+
+    // get the thing with the given name
+    public Thing? GetThing(string name)
+    {
+        return Things.FirstOrDefault(t => t.Name == name);
     }
 }
