@@ -8,8 +8,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BombDetect.Objects", "BombD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDL2-CS.Core", "Libraries\SDL2-CS\SDL2-CS.Core.csproj", "{A342694F-D0CA-4C0B-BA6B-A91A6E9D355A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BombDetect.Network", "BombDetect.Network\BombDetect.Network.csproj", "{CFD30097-9EB3-4100-9136-9BADB96C8DC1}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,9 +30,5 @@ Global
 		{A342694F-D0CA-4C0B-BA6B-A91A6E9D355A}.Debug|Any CPU.Build.0 = Debug|x64
 		{A342694F-D0CA-4C0B-BA6B-A91A6E9D355A}.Release|Any CPU.ActiveCfg = Release|x64
 		{A342694F-D0CA-4C0B-BA6B-A91A6E9D355A}.Release|Any CPU.Build.0 = Release|x64
-		{CFD30097-9EB3-4100-9136-9BADB96C8DC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CFD30097-9EB3-4100-9136-9BADB96C8DC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CFD30097-9EB3-4100-9136-9BADB96C8DC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CFD30097-9EB3-4100-9136-9BADB96C8DC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
