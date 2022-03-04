@@ -5,6 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IntermediateOutputPath>../bin</IntermediateOutputPath>
+    <Platforms>x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>

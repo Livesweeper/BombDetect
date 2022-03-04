@@ -8,7 +8,7 @@ namespace BombDetect;
 
 public static class Keyboard
 {
-    private static List<SDL_Keycode> KeysDown;
+    public static List<SDL_Keycode> KeysDown = new();
 
     // events
     public static event EventHandler<KeyEventArgs> KeyDown;
