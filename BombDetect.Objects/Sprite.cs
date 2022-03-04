@@ -21,4 +21,9 @@ public class Sprite : Thing2D
     {
         Texture.Draw();
     }
+
+    public override void Destroy()
+    {
+        Texture.Destroy();
+    }
 }

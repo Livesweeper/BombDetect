@@ -56,4 +56,11 @@ public class Texture : Thing
     {
         SDL_RenderCopy(Renderer.GetRenderer(), TexturePointer, ref _offRect, ref _offRect);
     }
+
+    // add a way to destroy the texture
+    public override void Destroy()
+    {
+        SDL_DestroyTexture(TexturePointer);
+        SDL_FreeSurface(Surface);
+    }
 }
