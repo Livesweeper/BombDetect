@@ -3,6 +3,9 @@ using static SDL2.SDL.SDL_EventType;
 
 namespace BombDetect;
 
+// disable warning for non-nullable fields
+#pragma warning disable CS8618
+
 public static class Keyboard
 {
     private static List<SDL_Keycode> KeysDown;

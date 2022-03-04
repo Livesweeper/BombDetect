@@ -3,8 +3,10 @@ using static SDL2.SDL_mixer;
 using static SDL2.SDL_ttf;
 using static SDL2.SDL_image;
 
+using BombDetect.Core;
+
 namespace BombDetect;
-internal static class Engine
+public static class Engine
 {
     public static bool Running;
     public static void Initialize(string title, int x, int y, int w, int h, SDL_WindowFlags flags)
@@ -39,27 +41,23 @@ internal static class Engine
         Running = true;
     }
 
-    public static void Run(string sceneName)
+    public static void Run()
     {
-        // scenes go here (placeholder)
-
         if (Running)
         {
             try
             {
                 while (Running)
                 {
-                    // tick before render and shit
                     Timer.Tick();
                     UpdateEvents();
                     Update(Timer.GetDeltaTime());
                     Render();
-                    // i forgor
                 }
             }
             catch (Exception e)
             {
-                LogError(e.Message);
+                Console.WriteLine("Exception: " + e.Message);
             }
         }
 
@@ -68,8 +66,8 @@ internal static class Engine
 
     public static void Quit()
     {
-        SDL_DestroyRenderer(Renderer.GetRenderer());
-        SDL_DestroyWindow(Window.GetWindow());
+        Running = false;
+        Destroy();
         SDL_Quit();
         Mix_Quit();
         IMG_Quit();
@@ -83,21 +81,29 @@ internal static class Engine
 
     public static void Update(float dt)
     {
-
+        if (SceneManager.CurrentScene != null)
+        {
+            SceneManager.CurrentScene.Update(dt);
+        }
     }
 
     public static void Render()
     {
-
+        if (SceneManager.CurrentScene != null)
+        {
+            SceneManager.CurrentScene.Render();
+        }
     }
 
     public static void Destroy()
     {
+        // destroy all scenes in SceneManager
+        foreach (var scene in SceneManager.Scenes)
+        {
+            scene.Value.Destroy();
+        }
         
-    }
-
-    public static void LogError(string message)
-    {
-
+        SDL_DestroyRenderer(Renderer.GetRenderer());
+        SDL_DestroyWindow(Window.GetWindow());
     }
 }

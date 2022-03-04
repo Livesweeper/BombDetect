@@ -9,6 +9,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Libraries\SDL2-CS\SDL2-CS.Core.csproj" />
+      <ProjectReference Include="..\BombDetect.Core\BombDetect.Core.csproj" />
     </ItemGroup>
 
 </Project>

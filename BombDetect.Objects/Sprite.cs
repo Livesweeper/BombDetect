@@ -1,5 +1,3 @@
-//using static SDL2.SDL;
-
 using System.Numerics;
 using BombDetect.Core;
 

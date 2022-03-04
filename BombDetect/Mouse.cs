@@ -1,8 +1,12 @@
 using static SDL2.SDL;
 using static SDL2.SDL.SDL_EventType;
+
 using System.Numerics;
 
 namespace BombDetect;
+
+// disable that same warning here too
+#pragma warning disable CS8618
 
 public static class Mouse
 {

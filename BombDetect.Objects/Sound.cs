@@ -1,4 +1,5 @@
 using static SDL2.SDL_mixer;
+
 using BombDetect.Core;
 using System.Numerics;
 
