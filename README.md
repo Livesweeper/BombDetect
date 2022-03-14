@@ -3,8 +3,8 @@ A minimal game engine used by Livesweeper
 
 ## Features
 - Cross platform
-- **NO** entity component system
-- Direct access to the native pointers and structs used by SDL2#
+- Object oriented (because ECS sucks)
+- Not *too* high level
 - Only has a handful of objects, resulting in less bloat
 
 ## How to use
