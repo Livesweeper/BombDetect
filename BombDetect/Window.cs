@@ -22,8 +22,17 @@ public static class Window
         _rect.h = h;
     }
 
+    // making a public field called "Window" is a bad idea when the class is also named "Window"
+    // - c# compiler, 2022 i think
     public static IntPtr GetWindow() => _window;
-    public static SDL_Rect GetRect() => _rect;
+
+    // i actually have good reasoning to not make _rect public!!!
+    public static SDL_Rect GetRect()
+    {
+        // it is a very good idea to not update the rect every frame so let's do it when this is called
+        UpdateRect();
+        return _rect;
+    }
 
     public static SDL_Rect GetDisplayBounds()
     {
@@ -39,5 +48,11 @@ public static class Window
 
         return flags == (uint)SDL_WindowFlags.SDL_WINDOW_FULLSCREEN 
                 || flags == (uint)SDL_WindowFlags.SDL_WINDOW_FULLSCREEN_DESKTOP;
+    }
+
+    public static void UpdateRect()
+    {
+        SDL_GetWindowPosition(_window, out _rect.x, out _rect.y);
+        SDL_GetWindowSize(_window, out _rect.w, out _rect.h);
     }
 }

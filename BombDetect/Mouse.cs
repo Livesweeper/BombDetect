@@ -61,8 +61,14 @@ public static class Mouse
 
     public static void OnMouseMove(SDL_Event e)
     {
-        Position.X = e.motion.x;
-        Position.Y = e.motion.y;
+        // set position using SDL_GetMouseState
+        SDL_GetMouseState(out var x, out var y);
+        Position = new(x, y);
+
         MouseMoved.Invoke(null, new(new(e.motion.xrel, e.motion.yrel)));
     }
+
+    // is the mouse position inside the given rectangle? (vector2)
+    public static bool Inside(Vector2 pos, Vector2 size) 
+        => Position.X >= pos.X && Position.X <= pos.X + size.X && Position.Y >= pos.Y && Position.Y <= pos.Y + size.Y;
 }

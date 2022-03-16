@@ -8,7 +8,7 @@ namespace BombDetect.Objects;
 // sound thing
 public class Sound : Thing
 {
-    public IntPtr SoundEffect;
+    public IntPtr SoundPointer;
     public string Path;
     public bool Loop;
     public int Volume; // 0-128??????? why
@@ -25,8 +25,8 @@ public class Sound : Thing
         : base(name, parent)
     {
         Path = path;
-        SoundEffect = Mix_LoadWAV(Path); // better not be music or i will commit several crimes
-        if (SoundEffect == IntPtr.Zero)
+        SoundPointer = Mix_LoadWAV(Path); // better not be music or i will commit several crimes
+        if (SoundPointer == IntPtr.Zero)
         {
             throw new Exception("Failed to load sound effect: " + Mix_GetError());
         }
@@ -45,6 +45,7 @@ public class Sound : Thing
                 var panning = (byte)(thing.Position.X / thing.Size.X * 255);
                 if (panning > 255) panning = 255;
                 if (panning < 0) panning = 0;
+                
                 Mix_SetPanning(Channel, panning, (byte)(255 - panning));
             }
         }
@@ -54,7 +55,9 @@ public class Sound : Thing
     public void Play()
     {
         if (Playing) return;
-        Channel = Mix_PlayChannel(-1, SoundEffect, Loop ? -1 : 0);
+
+        Channel = Mix_PlayChannel(-1, SoundPointer, Loop ? -1 : 0);
+
         if (Channel == -1)
         {
             throw new Exception("Failed to play sound effect: " + Mix_GetError());
@@ -74,6 +77,6 @@ public class Sound : Thing
     public override void Destroy()
     {
         Stop();
-        Mix_FreeChunk(SoundEffect);
+        Mix_FreeChunk(SoundPointer);
     }
 }

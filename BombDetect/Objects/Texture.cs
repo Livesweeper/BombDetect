@@ -12,8 +12,8 @@ public class Texture : Thing
     public IntPtr TexturePointer;
     public IntPtr Surface;
     
-    public Vector2 Offset;
-    public Vector2 CropSize; // 0, 0 means no crop
+    public Vector2 Offset = new();
+    public Vector2 CropSize = new(); // 0, 0 means no crop
     
     private SDL_Rect _offRect;
     private SDL_Rect _cropRect;
@@ -28,15 +28,14 @@ public class Texture : Thing
         {
             Offset = sprite.Position;
             CropSize = sprite.Size;
-            
-            SDL_QueryTexture(TexturePointer, out _, out _, out _cropRect.w, out _cropRect.h);
-
-            _offRect.x = (int)Offset.X;
-            _offRect.y = (int)Offset.Y;
-            _offRect.w = (int)CropSize.X == 0 ? _cropRect.w : (int)CropSize.X;
-            _offRect.h = (int)CropSize.Y == 0 ? _cropRect.h : (int)CropSize.Y;
         }
-        else throw new ArgumentException("Textures can't be used with this object");
+
+        SDL_QueryTexture(TexturePointer, out _, out _, out _cropRect.w, out _cropRect.h);
+
+        _offRect.x = (int)Offset.X;
+        _offRect.y = (int)Offset.Y;
+        _offRect.w = (int)CropSize.X == 0 ? _cropRect.w : (int)CropSize.X;
+        _offRect.h = (int)CropSize.Y == 0 ? _cropRect.h : (int)CropSize.Y;
     }
 
     // override update to update texture offsets with the vector2s we have
@@ -44,12 +43,14 @@ public class Texture : Thing
     {
         if (Parent is Sprite sprite)
         {
-            _offRect.x = (int)Offset.X;
-            _offRect.y = (int)Offset.Y;
-            _offRect.w = (int)CropSize.X == 0 ? _cropRect.w : (int)CropSize.X;
-            _offRect.h = (int)CropSize.Y == 0 ? _cropRect.h : (int)CropSize.Y;
+            Offset = sprite.Position;
+            CropSize = sprite.Size;
         }
-        else throw new ArgumentException("Textures can't be used with this object");
+
+        _offRect.x = (int)Offset.X;
+        _offRect.y = (int)Offset.Y;
+        _offRect.w = (int)CropSize.X == 0 ? _cropRect.w : (int)CropSize.X;
+        _offRect.h = (int)CropSize.Y == 0 ? _cropRect.h : (int)CropSize.Y;
     }
 
     public void Draw()

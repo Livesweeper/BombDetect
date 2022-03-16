@@ -49,6 +49,7 @@ public static class Engine
             {
                 while (Running)
                 {
+                    Window.GetDisplayBounds();
                     Timer.Tick();
                     UpdateEvents();
                     Update(Timer.GetDeltaTime());

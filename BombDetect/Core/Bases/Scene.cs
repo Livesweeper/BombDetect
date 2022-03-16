@@ -1,5 +1,4 @@
-using System.Numerics;
-using static SDL2.SDL;
+using BombDetect.UI;
 
 namespace BombDetect.Core;
 
@@ -8,6 +7,9 @@ public class Scene
 {
     public List<Thing> Things { get; } = new();
     private bool _isRunning;
+
+    // only 1 UIContainer
+    public UIContainer UIContainer { get; } = new();
 
     public Scene()
     {
