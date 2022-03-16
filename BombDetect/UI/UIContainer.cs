@@ -20,4 +20,13 @@ public class UIContainer
             element.OnRender();
         }
     }
+
+    // destroy
+    public void Destroy()
+    {
+        foreach (var element in Elements)
+        {
+            element.Destroy();
+        }
+    }
 }

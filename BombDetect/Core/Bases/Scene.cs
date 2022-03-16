@@ -54,6 +54,8 @@ public class Scene
                 }
             }
         }
+        // ui renders on top of everything else
+        UIContainer.Render();
     }
 
     // stop
@@ -70,6 +72,8 @@ public class Scene
         {
             thing.Destroy();
         }
+        // destroy the ui too, they're important
+        UIContainer.Destroy();
     }
 
     // get the thing with the given name
