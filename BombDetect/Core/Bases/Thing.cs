@@ -34,6 +34,6 @@ public class Thing
     // destroy the thing
     public virtual void Destroy()
     {
-
+        Stop();
     }
 }

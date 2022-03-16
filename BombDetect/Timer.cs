@@ -4,7 +4,8 @@ namespace BombDetect;
 
 public static class Timer
 {
-    private static float _deltaTime;
+    public static float DeltaTime { get; private set; }
+    
     private static ulong _now;
     private static ulong _last;
     
@@ -13,8 +14,6 @@ public static class Timer
         _last = _now;
         _now = SDL_GetPerformanceCounter();
 
-        _deltaTime = (float)((_now - _last) * 1000 / SDL_GetPerformanceFrequency());
+        DeltaTime = (float)((_now - _last) * 1000 / SDL_GetPerformanceFrequency());
     }
-
-    public static float GetDeltaTime() => _deltaTime;
 }

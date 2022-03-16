@@ -1,4 +1,4 @@
-﻿using static SDL2.SDL;
+using static SDL2.SDL;
 using static SDL2.SDL_mixer;
 using static SDL2.SDL_ttf;
 using static SDL2.SDL_image;
@@ -52,7 +52,7 @@ public static class Engine
                     Window.GetDisplayBounds();
                     Timer.Tick();
                     UpdateEvents();
-                    Update(Timer.GetDeltaTime());
+                    Update(Timer.DeltaTime);
                     Render();
                 }
             }
