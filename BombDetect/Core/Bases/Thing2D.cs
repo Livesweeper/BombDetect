@@ -14,8 +14,7 @@ public class Thing2D : Thing
     // z-index
     public int ZIndex { get; set; }
 
-    public Thing2D(string name, Vector2 position, Vector2 size, Thing? parent = null)
-        : base(name, parent)
+    public Thing2D(string name, Vector2 position, Vector2 size, Thing? parent = null) : base(name, parent)
     {
         Position = position;
         Size = size;
