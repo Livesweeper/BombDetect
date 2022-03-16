@@ -3,7 +3,7 @@ A minimal game engine used by Livesweeper
 
 ## Features
 - Cross platform
-- Object oriented (because ECS sucks)
+- Object oriented (because entity component systems suck)
 - Not *too* high level
 - Only has a handful of objects, resulting in less bloat
 
