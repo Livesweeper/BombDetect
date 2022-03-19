@@ -1,8 +1,7 @@
+// TODO: make text change dynamically, for timers and stuff
 using static SDL2.SDL_ttf;
 using static SDL2.SDL;
 
-using BombDetect;
-using BombDetect.Core;
 using System.Numerics;
 
 namespace BombDetect.UI;
@@ -26,7 +25,6 @@ public class TextLabel : Element
         Text = text;
         Font = font;
 
-        // error checking
         if (Font == IntPtr.Zero)
             throw new ArgumentException("Font must be a valid SDL_Font pointer");
 
@@ -64,4 +62,8 @@ public class TextLabel : Element
         SDL_FreeSurface(_surface);
         base.Destroy();
     }
+
+    public int GetTextWidth() => _sizeRect.w;
+
+    public int GetTextHeight() => _sizeRect.h;
 }

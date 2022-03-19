@@ -52,6 +52,9 @@ public static class Renderer
         SDL_SetRenderDrawColor(_renderer, r, g, b ,a);
     }
 
+    // save some time
+    public static void SetDrawColor(SDL_Color color) => SetDrawColor(color.r, color.g, color.b, color.a);
+
     public static void UpdateViewportRect()
     {
         SDL_Rect viewport = new() { x = 0, y = 0, w = _windowWidth, h = _windowHeight};

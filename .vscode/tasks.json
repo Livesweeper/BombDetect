@@ -9,7 +9,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/BombDetect.sln",
+                "${workspaceFolder}/BombDetect/BombDetect.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -21,7 +21,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/BombDetect.sln",
+                "${workspaceFolder}/BombDetect/BombDetect.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -35,7 +35,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/BombDetect.sln"
+                "${workspaceFolder}/BombDetect/BombDetect.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
