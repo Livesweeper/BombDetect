@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BombDetect", "BombDetect\BombDetect.csproj", "{FF5C51A3-923F-4852-B0B3-D6BC239AB361}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BombDetect", "src\BombDetect.csproj", "{FF5C51A3-923F-4852-B0B3-D6BC239AB361}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDL2-CS.Core", "Libraries\SDL2-CS\SDL2-CS.csproj", "{A342694F-D0CA-4C0B-BA6B-A91A6E9D355A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDL2-CS.Core", "lib\SDL2-CS\SDL2-CS.csproj", "{A342694F-D0CA-4C0B-BA6B-A91A6E9D355A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

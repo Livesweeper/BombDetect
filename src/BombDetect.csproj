@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Libraries\SDL2-CS\SDL2-CS.csproj" />
+      <ProjectReference Include="..\lib\SDL2-CS\SDL2-CS.csproj" />
     </ItemGroup>
 
 </Project>

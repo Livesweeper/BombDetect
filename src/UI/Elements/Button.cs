@@ -18,8 +18,12 @@ public class Button : Element
     // a little thing for me
     private bool _mouseDown = false;
 
-    // clicked event!
-    public event EventHandler Clicked;
+    // events are a bit wack in c#, so let's use a virtual method instead
+    public virtual void Clicked()
+    {
+        // base method was probably called
+        Console.WriteLine("You don't have to call the base method, but it's useful for debugging");
+    }
 
     public Button
         (string name, Vector2 position, Vector2 size, SDL_Color color, string text, IntPtr font, Element? parent = null)
@@ -62,7 +66,7 @@ public class Button : Element
         if (_mouseDown)
         {
             _mouseDown = false;
-            Clicked?.Invoke(this, EventArgs.Empty);
+            Clicked();
         }
     }
 
