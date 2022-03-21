@@ -45,6 +45,7 @@ public static class Engine
     {
         if (Running)
         {
+            run:
             try
             {
                 while (Running)
@@ -59,6 +60,16 @@ public static class Engine
             catch (Exception e)
             {
                 Console.WriteLine("Exception: " + e.Message);
+
+                // null reference exceptions will absolutely kill the game
+                if (e.Message.Contains("NullReferenceException"))
+                {
+                    Running = false;
+                }
+                else
+                {
+                    goto run;
+                }
             }
         }
 
