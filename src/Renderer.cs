@@ -14,6 +14,9 @@ public static class Renderer
 
     internal static void Initialize()
     {
+        // before literally anything
+        SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
+
         _renderer = SDL_CreateRenderer(Window.GetWindow(), -1, 
                 SDL_RendererFlags.SDL_RENDERER_ACCELERATED | SDL_RendererFlags.SDL_RENDERER_PRESENTVSYNC);
         if (_renderer == IntPtr.Zero)
