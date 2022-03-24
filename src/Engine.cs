@@ -86,12 +86,13 @@ public static class Engine
 
     public static void Quit()
     {
+	Console.WriteLine("Quitting...");
         Running = false;
         Destroy();
-        SDL_Quit();
         Mix_Quit();
         IMG_Quit();
         TTF_Quit();
+	SDL_Quit();
     }
 
     public static void UpdateEvents()
@@ -117,6 +118,7 @@ public static class Engine
 
     public static void Destroy()
     {
+	Console.WriteLine("Destroying everything");
         // destroy all scenes in SceneManager
         foreach (var scene in SceneManager.Scenes)
         {
