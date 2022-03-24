@@ -4,6 +4,8 @@ namespace BombDetect;
 
 public static class Window
 {
+    public static SDL_Color BackgroundColor;
+
     private static IntPtr _window;
     private static SDL_Rect _rect = new();
 
@@ -20,6 +22,14 @@ public static class Window
         _rect.y = y;
         _rect.w = w;
         _rect.h = h;
+
+        BackgroundColor = new()
+        {
+            r = 0,
+            g = 0,
+            b = 0,
+            a = 255
+        };
     }
 
     // making a public field called "Window" is a bad idea when the class is also named "Window"

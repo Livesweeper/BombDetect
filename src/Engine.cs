@@ -49,7 +49,10 @@ public static class Engine
             {
                 while (Running)
                 {
-                    Window.GetDisplayBounds();
+                    // background color thing
+                    Renderer.SetDrawColor(Window.BackgroundColor);
+                    SDL_RenderClear(Renderer.GetRenderer());
+
                     Timer.Tick();
                     UpdateEvents();
                     Update(Timer.DeltaTime);
