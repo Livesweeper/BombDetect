@@ -14,7 +14,7 @@ public static class Window
         _window = SDL_CreateWindow(title, x, y, w, h, flags);
         if (_window == IntPtr.Zero)
         {
-            Console.WriteLine("failed to initialize window, returning");
+            Console.WriteLine("Failed to initialize window, returning");
             return;
         }
 
@@ -30,6 +30,8 @@ public static class Window
             b = 0,
             a = 255
         };
+	
+	Console.WriteLine("Initialized window, should be on screen");
     }
 
     // making a public field called "Window" is a bad idea when the class is also named "Window"

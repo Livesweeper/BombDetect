@@ -8,30 +8,31 @@ using BombDetect.Core;
 namespace BombDetect;
 public static class Engine
 {
-    public static bool Running;
+    public static bool Running = false;
     public static void Initialize(string title, int x, int y, int w, int h, SDL_WindowFlags flags)
     {
+	Console.WriteLine("Initializing...");
         if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
         {
-            Console.WriteLine("failed to init SDL, returning");
+            Console.WriteLine("Failed to init graphics, returning");
             return;
         }
 
         if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
         {
-            Console.WriteLine("failed to init mixer, returning");
+            Console.WriteLine("Failed to init audio, returning");
             return;
         }
 
         if (TTF_Init() < 0)
         {
-            Console.WriteLine("failed to init TTF, returning");
+            Console.WriteLine("Failed to init fonts, returning");
             return;
         }
 
         if (IMG_Init(IMG_InitFlags.IMG_INIT_PNG) < 0)
         {
-            Console.WriteLine("failed to init IMG, returning");
+            Console.WriteLine("Failed to init image rendering, returning");
             return;
         }
 
@@ -46,14 +47,17 @@ public static class Engine
         };
 
         Running = true;
+	Console.WriteLine("Ready");
     }
 
     public static void Run()
     {
+	Console.WriteLine("Trying to run");
         if (Running)
         {
             try
             {
+		Console.WriteLine("Running");
                 while (Running)
                 {
                     // background color thing
