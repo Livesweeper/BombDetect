@@ -14,7 +14,12 @@ public static class SceneManager
         }
 
         Scenes.Add(name, scene);
-        scene.Start();
+
+        // first one? set it as current
+        if (CurrentScene == null)
+        {
+            SetScene(name);
+        }
     }
 
     public static void SetScene(string name, bool destroy = false)

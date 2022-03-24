@@ -38,6 +38,13 @@ public static class Engine
         Window.Initialize(title, x, y, w, h, flags);
         Renderer.Initialize();
 
+        // make ctrl + shift + q quit the game
+        Keyboard.KeyDown += (sender, e) =>
+        {
+            if (e.Key == SDL_Keycode.SDLK_q && e.Mod == (SDL_Keymod.KMOD_LCTRL | SDL_Keymod.KMOD_LSHIFT))
+                Running = false;
+        };
+
         Running = true;
     }
 
@@ -59,14 +66,18 @@ public static class Engine
                     Render();
                 }
             }
-            catch
+            catch (Exception e)
             {
                 Running = false;
-                throw; // the big reveal
+                Console.WriteLine("This app just ran into a problem and it has to close.");
+                Console.WriteLine("Please report the info below to the nearest developer:");
+                Console.WriteLine("\n" + e.ToString());
+                Console.WriteLine("\nPress any key to get out of this mess.");
+                Console.ReadKey();
             }
         }
 
-        Destroy();
+        Quit();
     }
 
     public static void Quit()

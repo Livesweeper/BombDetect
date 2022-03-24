@@ -5,8 +5,10 @@ namespace BombDetect;
 public class KeyEventArgs : EventArgs
 {
     public SDL_Keycode Key { get; }
-    public KeyEventArgs(SDL_Keycode key)
+    public SDL_Keymod Mod { get; }
+    public KeyEventArgs(SDL_Keycode key, SDL_Keymod mod)
     {
         Key = key;
+        Mod = mod;
     }
 }
