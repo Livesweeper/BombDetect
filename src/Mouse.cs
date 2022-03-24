@@ -21,7 +21,6 @@ public static class Mouse
 
     public static void HandleMouseInput(SDL_Event e)
     {
-        
         switch (e.type)
         {
             case SDL_MOUSEBUTTONDOWN:
@@ -44,19 +43,24 @@ public static class Mouse
         if (!ButtonsDown.Contains(e.button.button))
         {
             ButtonsDown.Add(e.button.button);
-            MouseDown.Invoke(null, new(e.button.button));
+            
+            // invoke (safely)
+            Events.SafeInvoke(MouseDown, new MouseButtonEventArgs(e.button.button));
         }
     }
 
     public static void OnMouseUp(SDL_Event e)
     {
         ButtonsDown.Remove(e.button.button); // simply ignores if it doesn't exist
-        MouseUp.Invoke(null, new(e.button.button));
+
+        // invoke this one the cool way
+        Events.SafeInvoke(MouseUp, new MouseButtonEventArgs(e.button.button));
     }
 
     public static void OnMouseWheel(SDL_Event e)
     {
-        MouseWheel.Invoke(null, new(e.wheel.direction));
+        // ya
+        Events.SafeInvoke(MouseWheel, new MouseWheelEventArgs(e.wheel.direction));
     }
 
     public static void OnMouseMove(SDL_Event e)
@@ -65,7 +69,9 @@ public static class Mouse
         SDL_GetMouseState(out var x, out var y);
         Position = new(x, y);
 
-        MouseMoved.Invoke(null, new(new(e.motion.xrel, e.motion.yrel)));
+        // this is the exact place where i found the bug, fortunately i have a fix!!!
+        // invoke MouseMoved with mouse delta
+        Events.SafeInvoke(MouseMoved, new MouseMoveEventArgs(new(e.motion.xrel, e.motion.yrel)));
     }
 
     // is the mouse position inside the given rectangle? (vector2)

@@ -27,4 +27,13 @@ internal static class Events
             }
         }
     }
+
+    // weird way to invoke events
+    public static void SafeInvoke<T>(EventHandler<T> handler, T args) where T : EventArgs
+    {
+        if (handler != null)
+        {
+            handler(null, args);
+        }
+    }
 }

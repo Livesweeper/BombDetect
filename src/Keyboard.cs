@@ -27,7 +27,7 @@ public static class Keyboard
         if (!KeysDown.Contains(e.key.keysym.sym))
         {
             KeysDown.Add(e.key.keysym.sym);
-            KeyDown.Invoke(null, new(e.key.keysym.sym));
+            Events.SafeInvoke(KeyDown, new KeyEventArgs(e.key.keysym.sym));
         }
     }
 
@@ -35,6 +35,6 @@ public static class Keyboard
     {
         // if the key isn't in the list, no worries
         KeysDown.Remove(e.key.keysym.sym);
-        KeyUp.Invoke(null, new(e.key.keysym.sym));
+        Events.SafeInvoke(KeyUp, new KeyEventArgs(e.key.keysym.sym));
     }
 }
