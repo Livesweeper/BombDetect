@@ -1,3 +1,5 @@
+using System.Numerics;
+
 using static SDL2.SDL;
 
 namespace BombDetect;
@@ -5,6 +7,12 @@ namespace BombDetect;
 public static class Window
 {
     public static SDL_Color BackgroundColor;
+
+    // scaling (multiply by this to get the real size)
+    public static Vector2 Scale { get; private set; }
+
+    // original resolution will determine the scale
+    public static Vector2 OriginalResolution { get; private set; }
 
     private static IntPtr _window;
     private static SDL_Rect _rect = new();
@@ -30,8 +38,14 @@ public static class Window
             b = 0,
             a = 255
         };
+
+        // set the original resolution
+        OriginalResolution = new(w, h);
+
+        // scale time
+        Scale = new(w / OriginalResolution.X, h / OriginalResolution.Y);
 	
-	Console.WriteLine("Initialized window, should be on screen");
+	    Console.WriteLine("Initialized window, should be on screen");
     }
 
     // making a public field called "Window" is a bad idea when the class is also named "Window"
