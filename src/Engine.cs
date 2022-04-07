@@ -11,7 +11,7 @@ public static class Engine
     public static bool Running = false;
     public static void Initialize(string title, int x, int y, int w, int h, SDL_WindowFlags flags)
     {
-	Console.WriteLine("Initializing...");
+        Console.WriteLine("Initializing...");
         if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
         {
             Console.WriteLine("Failed to init graphics, returning");
@@ -47,17 +47,18 @@ public static class Engine
         };
 
         Running = true;
-	Console.WriteLine("Ready");
+        Console.WriteLine("Ready");
     }
 
     public static void Run()
     {
-	Console.WriteLine("Trying to run");
+        Console.WriteLine("Trying to run");
         if (Running)
         {
+            Console.WriteLine(SDL_GetError());
             try
             {
-		Console.WriteLine("Running");
+                Console.WriteLine("Running");
                 while (Running)
                 {
                     // background color thing
@@ -86,13 +87,13 @@ public static class Engine
 
     public static void Quit()
     {
-	Console.WriteLine("Quitting...");
+        Console.WriteLine("Quitting...");
         Running = false;
         Destroy();
         Mix_Quit();
         IMG_Quit();
         TTF_Quit();
-	SDL_Quit();
+        SDL_Quit();
     }
 
     public static void UpdateEvents()
@@ -114,17 +115,19 @@ public static class Engine
         {
             SceneManager.CurrentScene.Render();
         }
+        
+        SDL_RenderPresent(Renderer.GetRenderer());
     }
 
     public static void Destroy()
     {
-	Console.WriteLine("Destroying everything");
+        Console.WriteLine("Destroying everything");
         // destroy all scenes in SceneManager
         foreach (var scene in SceneManager.Scenes)
         {
             scene.Value.Destroy();
         }
-        
+
         SDL_DestroyRenderer(Renderer.GetRenderer());
         SDL_DestroyWindow(Window.GetWindow());
     }

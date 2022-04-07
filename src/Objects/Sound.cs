@@ -16,9 +16,6 @@ public class Sound : Thing
     // channel is set when playing
     public int Channel;
 
-    // should we follow the parent?
-    public bool FollowParent; // panning
-
     public bool Playing;
 
     public Sound(string name, string path, Thing? parent = null)
@@ -39,14 +36,12 @@ public class Sound : Thing
         if (Playing)
         {
             Mix_Volume(Channel, Volume);
-            if (FollowParent && Parent is Thing2D thing)
+            
+            // calculate panning based on position
+            if (Parent is Thing2D parent2D)
             {
-                // calculate panning based on parent's position (left/right channels, max is 255)
-                var panning = (byte)(thing.Position.X / thing.Size.X * 255);
-                if (panning > 255) panning = 255;
-                if (panning < 0) panning = 0;
-                
-                Mix_SetPanning(Channel, panning, (byte)(255 - panning));
+                var panning = (parent2D.Position.X / parent2D.GlobalPosition.X) * 128;
+                Mix_SetPanning(Channel, (byte)panning, (byte)(128 - panning));
             }
         }
     }

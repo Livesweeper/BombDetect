@@ -41,7 +41,7 @@ public static class Renderer
                 viewport.y = (_displayHeight - _windowHeight) / 2;
         }
 
-        SDL_RenderSetViewport(_renderer, ref viewport);
+        //SDL_RenderSetViewport(_renderer, ref viewport);
     }
 
     public static IntPtr GetRenderer() => _renderer;
