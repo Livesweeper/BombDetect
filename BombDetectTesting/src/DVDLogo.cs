@@ -18,19 +18,18 @@ public class DVDLogo : Sprite
     private SDL_Color _color;
 
     // a constructor
-    public DVDLogo() : base("DVD Logo", new(100, 100), "resources/dvd.png")
+    public DVDLogo() : base("DVD Logo", new(50, 50), "resources/dvd.png")
     {
         // random position and velocity
         _rng = new Random();
         Position = new(
-            _rng.Next(1, (int)Window.OriginalResolution.X),
-            _rng.Next(1, (int)Window.OriginalResolution.Y)
+            _rng.Next(50, 500),
+            _rng.Next(50, 500)
         );
-        _velocity = new(
-            _rng.Next(-10, 10),
-            _rng.Next(-10, 10)
-        );
-        
+        _velocity = new(2, -2);
+
+        Console.WriteLine(_velocity);
+
         // random color
         _color = RandomColor();
     }
@@ -49,9 +48,6 @@ public class DVDLogo : Sprite
     // render with dvd logic
     public override void OnRender()
     {
-        // base so it actually renders
-        base.OnRender();
-        
         Position += _velocity; // remember order of operations, don't get confused
         Texture.Offset = Position;
 
@@ -74,5 +70,8 @@ public class DVDLogo : Sprite
             _color = RandomColor();
             SDL_SetTextureColorMod(Texture.TexturePointer, _color.r, _color.g, _color.b);
         }
+
+        // base so it actually renders
+        base.OnRender();
     }
 }

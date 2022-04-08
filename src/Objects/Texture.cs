@@ -45,8 +45,7 @@ public class Texture : Thing
         );
     }
 
-    // override update to update texture offsets with the vector2s we have
-    public override void OnUpdate(float deltaTime)
+    public void Draw()
     {
         if (Parent is Sprite sprite)
         {
@@ -55,18 +54,10 @@ public class Texture : Thing
 
         _offRect.x = (int)Offset.X;
         _offRect.y = (int)Offset.Y;
-        _offRect.w = _cropRect.w;
-        _offRect.h = _cropRect.h;
-
-        Size = new(
-            (float)_cropRect.w,
-            (float)_cropRect.h
-        );
-    }
-
-    public void Draw()
-    {
-        SDL_RenderCopy(Renderer.GetRenderer(), TexturePointer, ref _cropRect, ref _offRect);
+        _offRect.w = (int)Size.X;
+        _offRect.h = (int)Size.Y;
+        
+        SDL_RenderCopy(Renderer.GetRenderer(), TexturePointer, IntPtr.Zero, ref _offRect);
     }
 
     // add a way to destroy the texture
