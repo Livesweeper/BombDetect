@@ -32,6 +32,7 @@ public class DVDLogo : Sprite
 
         // random color
         _color = RandomColor();
+        SDL_SetTextureColorMod(Texture.TexturePointer, _color.r, _color.g, _color.b);
     }
 
     // returns a random bright color
@@ -73,5 +74,16 @@ public class DVDLogo : Sprite
 
         // base so it actually renders
         base.OnRender();
+
+        // funny rectangle
+        SDL_Rect rect = new()
+        {
+            x = 1,
+            y = 1,
+            w = (int)Window.OriginalResolution.X - 1,
+            h = (int)Window.OriginalResolution.Y - 1
+        };
+        Renderer.SetDrawColor(_color);
+        SDL_RenderDrawRect(Renderer.GetRenderer(), ref rect);
     }
 }
