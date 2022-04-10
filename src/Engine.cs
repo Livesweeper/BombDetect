@@ -39,13 +39,6 @@ public static class Engine
         Window.Initialize(title, x, y, w, h, flags);
         Renderer.Initialize();
 
-        // make ctrl + shift + q quit the game
-        Keyboard.KeyDown += (sender, e) =>
-        {
-            if (e.Key == SDL_Keycode.SDLK_q && e.Mod == (SDL_Keymod.KMOD_LCTRL | SDL_Keymod.KMOD_LSHIFT))
-                Running = false;
-        };
-
         Running = true;
         Console.WriteLine("Ready");
     }
